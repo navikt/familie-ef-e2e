@@ -1,0 +1,23 @@
+{
+  "interactiveLogin": true,
+  "httpServer": "NettyWrapper",
+  "tokenCallbacks": [
+    {
+      "issuerId": "navq.onmicrosoft.com/v2.0",
+      "tokenExpiry": 120,
+      "requestMappings": [
+        {
+          "requestParam": "scope",
+          "match": "api://1/.default",
+          "claims": {
+            "aud": [
+              "1"
+            ],
+            "NAVident": "TestBruker",
+            "groups": ["ee5e0b5e-454c-4612-b931-1fe363df7c2c"]
+          }
+        }
+      ]
+    }
+  ]
+}
