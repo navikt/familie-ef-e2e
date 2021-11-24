@@ -1,0 +1,29 @@
+apiVersion: nais.io/v1
+kind: Naisjob
+metadata:
+  name: familie-ef-e2e
+  namespace: teamfamilie
+  labels:
+    team: teamfamilie
+spec:
+  accessPolicy:
+    outbound:
+      rules:
+        - application: familie-ef-iverksett
+  activeDeadlineSeconds: 150
+  azure:
+    application:
+      enabled: true
+  backoffLimit: 2
+  completions: 1
+  env:
+    - name: IVERKSETT_BASE_URL
+      value: http://familie-ef-iverksett
+    - name: LINKERD_SIDECAR_BASE_URL
+      value: http://localhost:4191
+  envFrom:
+    - secretRef:
+        name: familie
+  restartPolicy: Never
+  ttlSecondsAfterFinished: 400
+  image: {{image}}
