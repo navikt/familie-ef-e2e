@@ -37,8 +37,8 @@ jobs:
       - name: Upload naisjob.yaml
         uses: actions/upload-artifact@v1
         with:
-          name: naisjob-yaml
-          path: nais
+          name: tests.yml
+          path: .deploy
   deploy:
     name: Deploy to GCP
     needs: build
