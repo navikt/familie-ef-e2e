@@ -38,7 +38,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: naisjob-yaml
-          path: .deploy
+          path: nais
   run:
     name: Run tests as a Job
     needs: [ build ]
@@ -53,7 +53,7 @@ jobs:
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_API_KEY }}
           CLUSTER: dev-gcp
-          RESOURCE: .deploy/tests.yml
+          RESOURCE: nais/tests.yaml
           PRINT_PAYLOAD: true
           VAR: app=familie-ef-e2e
         timeout-minutes: 5
