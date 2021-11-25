@@ -39,17 +39,6 @@ jobs:
         with:
           name: tests.yml
           path: .deploy
-  deploy:
-    name: Deploy to GCP
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.0
-      - uses: nais/deploy/actions/deploy@v1
-        env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_API_KEY }}
-          CLUSTER: dev-gcp
-          RESOURCE: .deploy/nais-preprod.yaml
   run:
     name: Run tests as a Job
     needs: [ build ]
