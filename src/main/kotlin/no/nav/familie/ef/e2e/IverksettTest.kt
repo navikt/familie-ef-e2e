@@ -1,4 +1,4 @@
-
+package no.nav.familie.ef.e2e
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.runBlocking
 import no.nav.familie.ef.e2e.client.AzureAdClient
