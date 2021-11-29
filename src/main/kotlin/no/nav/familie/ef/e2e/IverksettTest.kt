@@ -32,6 +32,7 @@ class IverksettTest {
         }
         iverksettResponse?.status?.value shouldBe 400
         assertThat(iverksettResponse?.status?.value).isEqualTo(400)
+        throw Exception("Naisjob skal feile")
     }
 
 }
