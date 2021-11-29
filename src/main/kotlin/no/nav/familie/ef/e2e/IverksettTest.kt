@@ -5,6 +5,7 @@ import no.nav.familie.ef.e2e.client.AzureAdClient
 import no.nav.familie.ef.e2e.client.IverksettClient
 import no.nav.familie.ef.e2e.config.Configuration
 import no.nav.familie.ef.e2e.domene.IverksettRequest
+import org.assertj.core.api.Assertions.assertThat
 import java.io.File
 import java.util.*
 
@@ -30,6 +31,7 @@ class IverksettTest {
             )
         }
         iverksettResponse?.status?.value shouldBe 400
+        assertThat(iverksettResponse?.status?.value).isEqualTo(400)
     }
 
 }
