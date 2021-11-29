@@ -29,7 +29,7 @@ class IverksettTest {
                 IverksettRequest(newFile, File(pdf))
             )
         }
-        iverksettResponse?.status?.value shouldBe 200
+        iverksettResponse?.status?.value shouldBe 400
     }
 
 }
