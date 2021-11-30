@@ -21,7 +21,7 @@ class IverksettTest {
     private fun `kall mot iverksett returnerer status 200`() {
         val testIverksettDto = this::class.java.classLoader.getResource("IverksettDtoEksempel.json")!!.readText()
         val dtoMedNyUUID = testIverksettDto.replace("uuidReplace", UUID.randomUUID().toString())
-        val newFile = File("IverksettDtoEksempel.json")
+        val newFile = File("src/resources/IverksettDtoEksempelChanged.json")
         newFile.writeText(dtoMedNyUUID)
         val pdf = this::class.java.classLoader.getResource("Test.pdf")!!.file
 
