@@ -22,8 +22,7 @@ spec:
     - name: LINKERD_SIDECAR_BASE_URL
       value: http://localhost:4191
   envFrom:
-    - secretRef:
-        name: familie
+    - secret: familie
   restartPolicy: Never
   ttlSecondsAfterFinished: 400
   image: {{image}}
