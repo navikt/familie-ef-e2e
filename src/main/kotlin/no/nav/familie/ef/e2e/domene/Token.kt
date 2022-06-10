@@ -13,5 +13,4 @@ data class Token(
 ) {
 
     private val expirationTime: LocalDateTime = LocalDateTime.now().plusSeconds(expiresIn - 20L)
-
 }

@@ -3,8 +3,9 @@ package no.nav.familie.ef.e2e.client
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
-import io.ktor.client.*
-import io.ktor.client.features.json.*
+import io.ktor.client.HttpClient
+import io.ktor.client.features.json.JacksonSerializer
+import io.ktor.client.features.json.JsonFeature
 
 internal val httpClient = HttpClient {
 
