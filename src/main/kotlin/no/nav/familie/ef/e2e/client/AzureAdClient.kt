@@ -1,8 +1,10 @@
 package no.nav.familie.ef.e2e.client
 
-import io.ktor.client.request.*
-import io.ktor.content.*
-import io.ktor.http.*
+import io.ktor.client.request.post
+import io.ktor.client.request.url
+import io.ktor.content.TextContent
+import io.ktor.http.ContentType
+import io.ktor.http.formUrlEncode
 import no.nav.familie.ef.e2e.config.Configuration
 import no.nav.familie.ef.e2e.domene.Token
 

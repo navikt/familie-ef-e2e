@@ -20,7 +20,7 @@ private val defaultProperties = ConfigurationMap(
 )
 
 private val config = ConfigurationProperties.systemProperties() overriding
-        EnvironmentVariables overriding defaultProperties
+    EnvironmentVariables overriding defaultProperties
 
 private fun String.configProperty(): String = config[Key(this, stringType)]
 
@@ -37,5 +37,4 @@ data class Configuration(
         val iverksettClientId: String = "EF_IVERKSETT_CLIENT_ID".configProperty(),
         val tokenEndpoint: String = "AZURE_OPENID_CONFIG_TOKEN_ENDPOINT".configProperty().removeSuffix("/")
     )
-
 }

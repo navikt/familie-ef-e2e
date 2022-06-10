@@ -7,7 +7,7 @@ import no.nav.familie.ef.e2e.config.Configuration
 import no.nav.familie.ef.e2e.domene.IverksettRequest
 import org.assertj.core.api.Assertions.assertThat
 import java.io.File
-import java.util.*
+import java.util.UUID
 
 class IverksettTest {
     private val configuration = Configuration()
@@ -34,5 +34,4 @@ class IverksettTest {
         assertThat(iverksettResponse?.status?.value).isEqualTo(400)
         throw Exception("Naisjob skal feile")
     }
-
 }

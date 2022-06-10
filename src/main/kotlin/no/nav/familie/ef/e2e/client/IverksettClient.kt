@@ -1,13 +1,18 @@
 package no.nav.familie.ef.e2e.client
 
-import io.ktor.client.request.*
-import io.ktor.client.request.forms.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
-import io.ktor.utils.io.core.*
+import io.ktor.client.request.forms.MultiPartFormDataContent
+import io.ktor.client.request.forms.formData
+import io.ktor.client.request.header
+import io.ktor.client.request.post
+import io.ktor.client.request.url
+import io.ktor.client.statement.HttpResponse
+import io.ktor.http.Headers
+import io.ktor.http.HttpHeaders
+import io.ktor.utils.io.core.buildPacket
+import io.ktor.utils.io.core.writeFully
 import mu.KotlinLogging
 import no.nav.familie.ef.e2e.domene.IverksettRequest
-import java.util.*
+import java.util.UUID
 
 class IverksettClient(
     private val baseUrl: String,
@@ -25,27 +30,29 @@ class IverksettClient(
             url("$baseUrl/api/iverksett")
             header(HttpHeaders.Authorization, "Bearer ${token.token}")
             header("Nav-Call-Id", randomUUID)
-            body = MultiPartFormDataContent(formData {
-                this.appendInput(
-                    key = "fil",
-                    headers = Headers.build {
-                        append(HttpHeaders.ContentDisposition,"filename=Test.pdf")
-                        append(HttpHeaders.ContentType,"application/pdf")
-                    },
-                    size = iverksettRequest.fil.length()
-                ) { buildPacket { writeFully(iverksettRequest.fil.readBytes()) } }
-                this.appendInput(
-                    key = "data",
-                    headers = Headers.build {
-                        append(
-                            HttpHeaders.ContentDisposition,
-                            "filename=IverksettDtoEksempel.json"
-                        )
-                        append(HttpHeaders.ContentType,"application/json")
-                    },
-                    size = iverksettRequest.data.length()
-                ) { buildPacket { writeFully(iverksettRequest.data.readBytes()) } }
-            })
+            body = MultiPartFormDataContent(
+                formData {
+                    this.appendInput(
+                        key = "fil",
+                        headers = Headers.build {
+                            append(HttpHeaders.ContentDisposition, "filename=Test.pdf")
+                            append(HttpHeaders.ContentType, "application/pdf")
+                        },
+                        size = iverksettRequest.fil.length()
+                    ) { buildPacket { writeFully(iverksettRequest.fil.readBytes()) } }
+                    this.appendInput(
+                        key = "data",
+                        headers = Headers.build {
+                            append(
+                                HttpHeaders.ContentDisposition,
+                                "filename=IverksettDtoEksempel.json"
+                            )
+                            append(HttpHeaders.ContentType, "application/json")
+                        },
+                        size = iverksettRequest.data.length()
+                    ) { buildPacket { writeFully(iverksettRequest.data.readBytes()) } }
+                }
+            )
         }
     }
 }
